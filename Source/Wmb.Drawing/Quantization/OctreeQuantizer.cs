@@ -90,6 +90,10 @@ namespace Wmb.Drawing {
         /// <param name="original">Any old palette, this is overrwritten</param>
         /// <returns>The new color palette</returns>
         protected override ColorPalette GetPalette(ColorPalette original) {
+            if(original == null) {
+                throw new ArgumentNullException("original");
+            }
+
             // First off convert the octree to _maxColors colors
             ArrayList palette = this.octree.Palletize(maxColors - 1);
 

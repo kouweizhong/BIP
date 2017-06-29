@@ -1,0 +1,11 @@
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\bin\Debug\ImageResizer.exe
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\bin\Debug\ImageResizer.pdb
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\bin\Debug\Wmb.Drawing.dll
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\bin\Debug\Wmb.Drawing.pdb
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\bin\Debug\Wmb.Drawing.xml
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\obj\Debug\WinForms.csprojResolveAssemblyReference.cache
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\obj\Debug\Wmb.ImageResizer.Form1.resources
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\obj\Debug\Wmb.ImageResizer.Properties.Resources.resources
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\obj\Debug\WinForms.csproj.GenerateResource.Cache
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\obj\Debug\ImageResizer.exe
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\WinForms\obj\Debug\ImageResizer.pdb

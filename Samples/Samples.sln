@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{696A57E6-44C4-44D1-813D-C0EDFA1D0114}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wmb.Web", "..\Source\Wmb.Web\Wmb.Web.csproj", "{F526849E-485A-4D60-9255-41E6F95A8CB9}"
@@ -12,27 +14,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wmb.Web.SharePoint", "..\Source\Wmb.Web.Sharepoint\Wmb.Web.SharePoint.csproj", "{75AE01BE-00D3-4069-A9C5-818F2E8586F3}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs06.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = ..\\Source\\Wmb.Web\\Wmb.Web.csproj
-		SccProjectName1 = ../Source/Wmb.Web
-		SccLocalPath1 = ..\\Source\\Wmb.Web
-		SccProjectUniqueName2 = ..\\Source\\Wmb.Drawing\\Wmb.Drawing.csproj
-		SccProjectName2 = ../Source/Wmb.Drawing
-		SccLocalPath2 = ..\\Source\\Wmb.Drawing
-		SccProjectUniqueName3 = WinForms\\WinForms.csproj
-		SccProjectName3 = WinForms
-		SccLocalPath3 = WinForms
-		SccProjectUniqueName4 = Web\\Web.csproj
-		SccProjectName4 = Web
-		SccLocalPath4 = Web
-		SccProjectUniqueName5 = ..\\Source\\Wmb.Web.Sharepoint\\Wmb.Web.SharePoint.csproj
-		SccProjectName5 = ../Source/Wmb.Web.Sharepoint
-		SccLocalPath5 = ..\\Source\\Wmb.Web.Sharepoint
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

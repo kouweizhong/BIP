@@ -1,0 +1,9 @@
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Web\bin\Debug\Wmb.Web.XML
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Web\bin\Debug\Wmb.Web.dll
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Web\bin\Debug\Wmb.Web.pdb
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Web\bin\Debug\Wmb.Drawing.dll
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Web\bin\Debug\Wmb.Drawing.pdb
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Web\bin\Debug\Wmb.Drawing.xml
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Web\obj\Debug\Wmb.Web.csprojResolveAssemblyReference.cache
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Web\obj\Debug\Wmb.Web.dll
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Web\obj\Debug\Wmb.Web.pdb

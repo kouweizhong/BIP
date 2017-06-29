@@ -37,6 +37,10 @@ namespace Wmb.Drawing {
         /// <param name="source">The image to quantize</param>
         /// <returns>A quantized version of the image</returns>
         public Bitmap Quantize(Image source) {
+            if (source == null) {
+                throw new ArgumentNullException("source");
+            }
+
             // Get the size of the source image
             int height = source.Height;
             int width = source.Width;
@@ -44,47 +48,48 @@ namespace Wmb.Drawing {
             // And construct a rectangle from these dimensions
             Rectangle bounds = new Rectangle(0, 0, width, height);
 
-            // First off take a 32bpp copy of the image
-            Bitmap copy = new Bitmap(width, height, PixelFormat.Format32bppArgb);
-
-            // And construct an 8bpp version
+            // Construct an 8bpp version
             Bitmap output = new Bitmap(width, height, PixelFormat.Format8bppIndexed);
 
-            // Now lock the bitmap into memory
-            using (Graphics g = Graphics.FromImage(copy)) {
-                g.PageUnit = GraphicsUnit.Pixel;
+            // Take a 32bpp copy of the image
+            using (Bitmap copy = new Bitmap(width, height, PixelFormat.Format32bppArgb)) {
 
-                // Draw the source image onto the copy bitmap,
-                // which will effect a widening as appropriate.
-                g.DrawImage(source, bounds);
+                // Now lock the bitmap into memory
+                using (Graphics g = Graphics.FromImage(copy)) {
+                    g.PageUnit = GraphicsUnit.Pixel;
 
-            }
+                    // Draw the source image onto the copy bitmap,
+                    // which will effect a widening as appropriate.
+                    g.DrawImage(source, bounds);
 
-            // Define a pointer to the bitmap data
-            BitmapData sourceData = null;
-
-            try {
-                // Get the source image bits and lock into memory
-                sourceData = copy.LockBits(bounds, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-
-                // Call the FirstPass function if not a single pass algorithm.
-                // For something like an octree quantizer, this will run through
-                // all image pixels, build a data structure, and create a palette.
-                if (!this.singlePass) {
-                    this.FirstPass(sourceData, width, height);
                 }
 
-                // Then set the color palette on the output bitmap. I'm passing in the current palette 
-                // as there's no way to construct a new, empty palette.
-                output.Palette = this.GetPalette(output.Palette);
+                // Define a pointer to the bitmap data
+                BitmapData sourceData = null;
+
+                try {
+                    // Get the source image bits and lock into memory
+                    sourceData = copy.LockBits(bounds, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+
+                    // Call the FirstPass function if not a single pass algorithm.
+                    // For something like an octree quantizer, this will run through
+                    // all image pixels, build a data structure, and create a palette.
+                    if (!this.singlePass) {
+                        this.FirstPass(sourceData, width, height);
+                    }
+
+                    // Then set the color palette on the output bitmap. I'm passing in the current palette 
+                    // as there's no way to construct a new, empty palette.
+                    output.Palette = this.GetPalette(output.Palette);
 
 
-                // Then call the second pass which actually does the conversion
-                this.SecondPass(sourceData, output, width, height, bounds);
-            }
-            finally {
-                // Ensure that the bits are unlocked
-                copy.UnlockBits(sourceData);
+                    // Then call the second pass which actually does the conversion
+                    this.SecondPass(sourceData, output, width, height, bounds);
+                }
+                finally {
+                    // Ensure that the bits are unlocked
+                    copy.UnlockBits(sourceData);
+                }
             }
 
             // Last but not least, return the output bitmap
@@ -98,6 +103,10 @@ namespace Wmb.Drawing {
         /// <param name="width">The width in pixels of the image</param>
         /// <param name="height">The height in pixels of the image</param>
         protected virtual void FirstPass(BitmapData sourceData, int width, int height) {
+            if(sourceData == null) {
+                throw new ArgumentNullException("sourceData");
+            }
+
             // Define the source data pointers. The source row is a byte to
             // keep addition of the stride value easier (as this is in bytes)              
             IntPtr pSourceRow = sourceData.Scan0;
@@ -127,6 +136,14 @@ namespace Wmb.Drawing {
         /// <param name="height">The height in pixels of the image</param>
         /// <param name="bounds">The bounding rectangle</param>
         protected virtual void SecondPass(BitmapData sourceData, Bitmap output, int width, int height, Rectangle bounds) {
+            if(sourceData == null) {
+                throw new ArgumentNullException("sourceData");
+            }
+
+            if (output == null) {
+                throw new ArgumentNullException("output");
+            }
+
             BitmapData outputData = null;
 
             try {

@@ -105,6 +105,10 @@ namespace Wmb.Drawing {
         /// <param name="original">Any old palette, this is overrwritten</param>
         /// <returns>The new color palette</returns>
         protected override ColorPalette GetPalette(ColorPalette original) {
+            if (original == null) {
+                throw new ArgumentNullException("original");
+            }
+
             for (int index = 0; index < this.colors.Length; index++) {
                 original.Entries[index] = this.colors[index];
             }

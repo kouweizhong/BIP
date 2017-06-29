@@ -38,6 +38,10 @@ namespace Wmb.Drawing {
         /// <param name="extension">The extension.</param>
         /// <returns></returns>
         public static ImageFormat GetImageFormatByExtension(string extension) {
+            if(extension == null) {
+                throw new ArgumentNullException("extension");
+            }
+
             extension = extension.ToUpperInvariant();
 
             ImageFormat retVal;

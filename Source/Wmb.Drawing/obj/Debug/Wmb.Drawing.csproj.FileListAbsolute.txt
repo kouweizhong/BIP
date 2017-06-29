@@ -1,0 +1,7 @@
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\bin\Debug\Wmb.Drawing.XML
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\bin\Debug\Wmb.Drawing.dll
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\bin\Debug\Wmb.Drawing.pdb
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\bin\Debug\Wmb.Drawing.dll.CodeAnalysisLog.xml
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\bin\Debug\Wmb.Drawing.dll.lastcodeanalysissucceeded
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\obj\Debug\Wmb.Drawing.dll
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\obj\Debug\Wmb.Drawing.pdb

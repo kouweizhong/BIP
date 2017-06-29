@@ -74,8 +74,11 @@ namespace Wmb.Drawing {
         /// <param name="image">The image.</param>
         /// <param name="colorMatrices">The color matrices to apply to the image.</param>
         /// <returns></returns>
-        public static Image Transform(this Image image, Queue<ColorMatrix> colorMatrices)
-        {
+        public static Image Transform(this Image image, Queue<ColorMatrix> colorMatrices) {
+            if(colorMatrices == null) {
+                throw new ArgumentNullException("colorMatrices");
+            }
+
             if (colorMatrices.Count > 0) {
                 ColorMatrix multipliedMatrices = colorMatrices.Dequeue();
                 while (colorMatrices.Count > 0) {
@@ -445,9 +448,11 @@ namespace Wmb.Drawing {
             double scale = 1D;
             if (scaleWidth > 0 && scaleWidth < 1 && scaleHeight > 0 && scaleHeight < 1) {
                 scale = (scaleHeight < scaleWidth) ? scaleHeight : scaleWidth;
-            } else if (scaleWidth > 0 && scaleWidth < 1) {
+            }
+            else if (scaleWidth > 0 && scaleWidth < 1) {
                 scale = scaleWidth;
-            } else if (scaleHeight > 0 && scaleHeight < 1) {
+            }
+            else if (scaleHeight > 0 && scaleHeight < 1) {
                 scale = scaleHeight;
             }
 
@@ -566,7 +571,8 @@ namespace Wmb.Drawing {
                     encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, outputQuality);
                     image.Save(stream, imageFormat.GetImageCodecInfo(), encoderParameters);
                 }
-            } else {
+            }
+            else {
                 image.Save(stream, imageFormat);
             }
         }

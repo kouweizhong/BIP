@@ -1,0 +1,12 @@
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\bin\TestWeb.dll.config
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\bin\TestWeb.dll
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\bin\TestWeb.pdb
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\bin\Wmb.Drawing.dll
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\bin\Wmb.Web.dll
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\bin\Wmb.Drawing.pdb
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\bin\Wmb.Drawing.xml
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\bin\Wmb.Web.pdb
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\bin\Wmb.Web.xml
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\obj\Debug\TestWeb.dll
+C:\Users\wesley.bakker\Documents\GitHub\BIP\Samples\Web\obj\Debug\TestWeb.pdb

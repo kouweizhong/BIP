@@ -16,6 +16,14 @@ namespace Wmb.Drawing {
         /// <param name="right">The right.</param>
         /// <returns></returns>
         public static ColorMatrix Multiply(this ColorMatrix left, ColorMatrix right) {
+            if(left == null) {
+                throw new ArgumentNullException("left");
+            }
+
+            if(right == null) {
+                throw new ArgumentNullException("right");
+            }
+
             ColorMatrix retVal = new ColorMatrix();
             int size = 5;
 

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\enterprise\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="15.0">
+ <Targets>
+  <Target Name="C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\bin\Debug\Wmb.Drawing.dll">
+   <Modules>
+    <Module Name="wmb.drawing.dll">
+     <Namespaces>
+      <Namespace Name="Wmb.Drawing">
+       <Types>
+        <Type Name="CopyrightTransform" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#TransformCore(System.Drawing.Image)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-06-29 14:49:36Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\ImageTransforms" File="CopyrightTransform.cs" Line="126">In method 'CopyrightTransform.TransformCore(Image)', object 'new StringFormat()' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'new StringFormat()' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ImageUtility" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Clip(System.Drawing.Image,System.Int32,System.Int32,Wmb.Drawing.GraphicsQuality,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-06-29 14:49:36Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\Utility" File="ImageUtility.cs" Line="364">In method 'ImageUtility.Clip(this Image, int, int, GraphicsQuality, bool)', object 'bitmap' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'bitmap' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Redraw(System.Drawing.Image,Wmb.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-06-29 14:49:36Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\Utility" File="ImageUtility.cs" Line="414">In method 'ImageUtility.Redraw(this Image, GraphicsQuality, PixelFormat)', object 'retVal' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'retVal' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Resize(System.Drawing.Image,System.Int32,System.Int32,Wmb.Drawing.GraphicsQuality,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-06-29 14:49:36Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\Utility" File="ImageUtility.cs" Line="296">In method 'ImageUtility.Resize(this Image, int, int, GraphicsQuality, bool)', object 'bitmap' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'bitmap' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Quantizer" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Quantize(System.Drawing.Image)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2017-06-29 14:49:36Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Users\wesley.bakker\Documents\GitHub\BIP\Source\Wmb.Drawing\Quantization" File="Quantizer.cs" Line="52">In method 'Quantizer.Quantize(Image)', object 'output' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'output' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000">
+   <Name>Dispose objects before losing scope</Name>
+   <Description>If a disposable object is not explicitly disposed before all references to it are out of scope, the object will be disposed at some indeterminate time when the garbage collector runs the finalizer of the object. Because an exceptional event might occur that will prevent the finalizer of the object from running, the object should be explicitly disposed instead.</Description>
+   <Resolution Name="ExceptionEdge">In method {0}, object {1} is not disposed along all exception paths. Call System.IDisposable.Dispose on object {1} before all references to it are out of scope.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182289.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>
