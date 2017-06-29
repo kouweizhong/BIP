@@ -1,0 +1,1149 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wmb.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Wmb.Web.WebControls.IBetterImage">
+            <summary>
+            <para>IBetterImage interface</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.WebControls.IBetterImage.ImageSettings">
+            <summary>
+            <para>The ImageSettings for the ImageHandler.</para>
+            </summary>
+        </member>
+        <member name="T:Wmb.Web.ImageRetrieverElement">
+            <summary>
+            The image retriever element represents a reference to an image retriever class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageRetrieverElement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.ImageRetrieverElement"/> class.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageRetrieverElement.Name">
+            <summary>
+            Gets or sets the name to refer to the image retriever class.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageRetrieverElement.Class">
+            <summary>
+            Gets or sets the fully qualified domain name of the class.
+            </summary>
+            <value>The class.</value>
+        </member>
+        <member name="T:Wmb.Web.ImageMetadata">
+            <summary>
+            The image meta data class is used to reflect information about an image, needed for responding to the client without getting back to the image retriever.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageMetadata.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.ImageMetadata"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageMetadata.Create(Wmb.Web.ImageRetriever,System.String)">
+            <summary>
+            Creates a new ImageMetadata object based on the specified image retriever and save name.
+            </summary>
+            <param name="imageRetriever">The image retriever.</param>
+            <param name="saveName">Name of the save.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Wmb.Web.ImageMetadata.SaveName">
+            <summary>
+            Gets the initial name of the image when the client saves it.
+            </summary>
+            <value>The name of the save.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageMetadata.Extension">
+            <summary>
+            Gets the extension.
+            </summary>
+            <value>The extension.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageMetadata.LastModifiedDate">
+            <summary>
+            Gets the last modified date.
+            </summary>
+            <value>The last modified date.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageMetadata.ContentType">
+            <summary>
+            Gets the type of the content.
+            </summary>
+            <value>The type of the content.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageMetadata.ImageFormat">
+            <summary>
+            Gets the image format.
+            </summary>
+            <value>The image format.</value>
+        </member>
+        <member name="T:Wmb.Web.Caching.OutputCacheProvider">
+            <summary>
+            Base class for output caching. Designed conform the new ASP.Net 4.0 System.Web.Caching.OutputCacheProvider. Can be swapped in a later version.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.Caching.OutputCacheProvider.Add(System.String,System.Object,System.DateTime)">
+            <summary>
+            Inserts the specified entry into the output cache.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="entry">The entry.</param>
+            <param name="utcExpiry">The UTC expiry.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.Caching.OutputCacheProvider.Get(System.String)">
+            <summary>
+            Returns a reference to the specified entry in the output cache.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.Caching.OutputCacheProvider.Remove(System.String)">
+            <summary>
+            Removes the specified entry from the output cache.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:Wmb.Web.Caching.OutputCacheProvider.Set(System.String,System.Object,System.DateTime)">
+            <summary>
+            Inserts the specified entry into the output cache, overwriting the entry if it is already cached.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="entry">The entry.</param>
+            <param name="utcExpiry">The UTC expiry.</param>
+        </member>
+        <member name="T:Wmb.Web.WebControls.IBetterImageDesigner">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.WebControls.IBetterImageDesigner.GetDesignTimeHtml">
+            <exclude />
+        </member>
+        <member name="T:Wmb.Web.NameValueCollectionUtility">
+            <summary>
+            The NameValueCollectionUtility class holds the extensions and/or helpermethods for the NameValueCollection class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.NameValueCollectionUtility.IsValid(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Determines whether the specified name value collection is valid by checking it's hash.
+            </summary>
+            <param name="nameValueCollection">The name value collection.</param>
+            <returns>
+            	<c>true</c> if the specified name value collection is valid; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Wmb.Web.NameValueCollectionUtility.ToQueryString(System.Collections.Specialized.NameValueCollection,System.Boolean)">
+            <summary>
+            Converts the NameValueCollection to a query string.
+            </summary>
+            <param name="nameValueCollection">The name value collection.</param>
+            <param name="appendHash">if set to <c>true</c> a hash wil be appended which can be used to verify is the QueryString is valid.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.NameValueCollectionUtility.ToQueryString(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Converts the NameValueCollection to a query string.
+            </summary>
+            <param name="nameValueCollection">The name value collection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.NameValueCollectionUtility.Set(System.Collections.Specialized.NameValueCollection,System.String,System.Object)">
+            <summary>
+            Sets the specified key to the given value.
+            </summary>
+            <param name="nameValueCollection">The name value collection.</param>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Wmb.Web.NameValueCollectionUtility.Set(System.Collections.Specialized.NameValueCollection,System.String,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Sets the specified key to the given value.
+            </summary>
+            <param name="nameValueCollection">The name value collection.</param>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <param name="encrypt">if set to <c>true</c> the value wil be encrypted.</param>
+            <param name="password">The password used for encryption.</param>
+            <param name="salt">The salt used for encryption.</param>
+        </member>
+        <member name="T:Wmb.Web.HttpRequestUtility">
+            <summary>
+            The HttpRequestUtility class holds the extensions and/or helpermethods for the HttpRequest class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.HttpRequestUtility.IsLeeched(System.Web.HttpRequest)">
+            <summary>
+            Determines whether the specified HttpRequest is leeched.
+            </summary>
+            <param name="httpRequest">The HttpRequest.</param>
+            <returns>
+            	<c>true</c> if the specified HttpRequest is leeched; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Wmb.Web.HttpRequestUtility.GetQueryStringValue``1(System.Web.HttpRequest,System.String,``0,System.Boolean,System.String,System.String)">
+            <summary>
+            Gets a query string value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="httpRequest">The HttpRequest.</param>
+            <param name="key">The key of the value.</param>
+            <param name="defaultValue">The default value if none found.</param>
+            <param name="decrypt">if set to <c>true</c> the value gets decrypted.</param>
+            <param name="password">The password used for decryption.</param>
+            <param name="salt">The salt used for decryption.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.HttpRequestUtility.GetQueryStringValue``1(System.Web.HttpRequest,System.String,``0)">
+            <summary>
+            Gets a query string value without decrypting.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="httpRequest">The HttpRequest.</param>
+            <param name="key">The key of the value.</param>
+            <param name="defaultValue">The default value if none found.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.HttpRequestUtility.IsValid(System.Web.HttpRequest,System.Boolean,System.Boolean)">
+            <summary>
+            Determines whether this request is valid
+            </summary>
+            <param name="httpRequest">The HttpRequest.</param>
+            <param name="verifyHash">if set to <c>true</c> verify the querystring by it's hash.</param>
+            <param name="leechProtect">if set to <c>true</c> it protects you from leechers.</param>
+            <returns>
+            	<c>true</c> if [is request valid] [the specified HTTP request]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Wmb.Web.FileSystemImageRetriever">
+            <summary>
+            The FileSystemImageRetriever retriever retrieves images from the filesystem
+            </summary>
+        </member>
+        <member name="T:Wmb.Web.ImageRetriever">
+            <summary>
+            This base class is used for implementing different filesources for the imagehandler
+            </summary>
+        </member>
+        <member name="F:Wmb.Web.ImageRetriever.FileNotFoundErrorMessage">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.ImageRetriever.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.ImageRetriever"/> class.
+            </summary>
+            <param name="source">The source.</param>
+        </member>
+        <member name="M:Wmb.Web.ImageRetriever.GetImage">
+            <summary>
+            Gets the image.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.ImageRetriever.GetImageInternal">
+            <summary>
+            Gets the image internal.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Wmb.Web.ImageRetriever.Source">
+            <summary>
+            Gets the source.
+            </summary>
+            <value>The source.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageRetriever.Extension">
+            <summary>
+            Gets the extension.
+            </summary>
+            <value>The extension.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageRetriever.FileNameWithoutExtension">
+            <summary>
+            Gets the file name without extension.
+            </summary>
+            <value>The file name without extension.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageRetriever.LastModifiedDate">
+            <summary>
+            Gets the last modified date.
+            </summary>
+            <value>The last modified date.</value>
+        </member>
+        <member name="M:Wmb.Web.FileSystemImageRetriever.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.FileSystemImageRetriever"/> class.
+            </summary>
+            <param name="source">The source.</param>
+        </member>
+        <member name="M:Wmb.Web.FileSystemImageRetriever.GetImageInternal">
+            <summary>
+            Gets the image internal.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Wmb.Web.FileSystemImageRetriever.ImageFile">
+            <summary>
+            Gets the image file.
+            </summary>
+            <value>The image file.</value>
+        </member>
+        <member name="P:Wmb.Web.FileSystemImageRetriever.LastModifiedDate">
+            <summary>
+            Gets the last modified date.
+            </summary>
+            <value>The last modified date.</value>
+        </member>
+        <member name="P:Wmb.Web.FileSystemImageRetriever.Extension">
+            <summary>
+            Gets the extension.
+            </summary>
+            <value>The extension.</value>
+        </member>
+        <member name="P:Wmb.Web.FileSystemImageRetriever.FileNameWithoutExtension">
+            <summary>
+            Gets the file name without extension.
+            </summary>
+            <value>The file name without extension.</value>
+        </member>
+        <member name="T:Wmb.Web.WebControls.ImageLink">
+            <summary>
+            <para>BetterImage control inherits from System.Web.UI.WebControls.Image</para>
+            <para>So what's better? Well...it has a number of futures to edit your image on the fly.</para>
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.WebControls.ImageLink.DataBindChildren">
+            <summary>
+            Binds a data source to the server control's child controls.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.WebControls.ImageLink.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.WebControls.ImageLink.LoadViewState(System.Object)">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.WebControls.ImageLink.SaveViewState">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.WebControls.ImageLink.TrackViewState">
+            <exclude />
+        </member>
+        <member name="P:Wmb.Web.WebControls.ImageLink.ImageSettings">
+            <summary>
+            <para>The ImageSettings for the ImageHandler.</para>
+            </summary>
+        </member>
+        <member name="T:Wmb.Web.ImageTransformCollection">
+            <summary>
+            Represents a collection of image transforms in the configuration.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageTransformCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.ImageTransformCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageTransformCollection.CreateNewElement">
+            <summary>
+            When overridden in a derived class, creates a new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:Wmb.Web.ImageTransformCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="T:Wmb.Web.StateBagUtility">
+            <summary>
+            The StateBagUtility class holds the extensions and/or helpermethods for the StateBag class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.StateBagUtility.GetValue``1(System.Web.UI.StateBag,System.String,``0)">
+            <summary>
+            Gets the view state value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="stateBag">The state bag.</param>
+            <param name="key">The key.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.StateBagUtility.SetValue(System.Web.UI.StateBag,System.String,System.Object)">
+            <summary>
+            Sets a key in the state bag to the specified value.
+            </summary>
+            <param name="stateBag">The state bag.</param>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="T:Wmb.Web.WebControls.BetterImage">
+            <summary>
+            <para>BetterImage control inherits from System.Web.UI.WebControls.Image</para>
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.WebControls.BetterImage.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.WebControls.BetterImage.DataBindChildren">
+            <summary>
+            Binds a data source to the server control's child controls.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.WebControls.BetterImage.LoadViewState(System.Object)">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.WebControls.BetterImage.SaveViewState">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.WebControls.BetterImage.TrackViewState">
+            <exclude />
+        </member>
+        <member name="P:Wmb.Web.WebControls.BetterImage.ImageSettings">
+            <summary>
+            <para>The ImageSettings for the ImageHandler.</para>
+            </summary>
+        </member>
+        <member name="T:Wmb.Web.ImageTransformElement">
+            <summary>
+            The image transform element represents a reference to an image transform class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageTransformElement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.ImageTransformElement"/> class.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageTransformElement.Name">
+            <summary>
+            Gets or sets the name to refer to the image transform class.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageTransformElement.Class">
+            <summary>
+            Gets or sets the fully qualified domain name of the class.
+            </summary>
+            <value>The class.</value>
+        </member>
+        <member name="T:Wmb.Web.ImageSettings">
+            <summary>
+            This class holds all image settings for the IBetterImage controls
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageSettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.ImageSettings"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageSettings.#ctor(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.ImageSettings"/> class.
+            </summary>
+            <param name="nameValueCollection">The name value collection.</param>
+        </member>
+        <member name="M:Wmb.Web.ImageSettings.ToNameValueCollection">
+            <summary>
+            Convert these settings to a NameValueCollection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.ImageSettings.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Wmb.Web.ImageSettings.ToImgUrl(System.String)">
+            <summary>
+            Convert the img URL to one that redirects to the ImageHandler.
+            </summary>
+            <param name="src">The source.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.ViewState">
+            <exclude />
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.ImageRetriever">
+            <summary>
+            Gets or sets the image retriever.
+            </summary>
+            <value>The image retriever.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.ImageCacheBroker">
+            <summary>
+            Gets or sets the image cache broker.
+            </summary>
+            <value>The image cache broker.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.MaxWidth">
+            <summary>
+            <para>The maximum width of the image.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.MaxHeight">
+            <summary>
+            <para>The maximum height of the image.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.GraphicsQuality">
+            <summary>
+            <para>The resize quality of the image.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.OutputQuality">
+            <summary>
+            <para>The output quality of the image.</para>
+            <remarks>Works on jpeg images only!</remarks>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.Grayscale">
+            <summary>
+            <para>Whether or not you would like the image grayscaled.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.Negative">
+            <summary>
+            <para>Whether or not you would like a negative of the image.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.Sepia">
+            <summary>
+            <para>Whether or not you would like to turn your image into sepia.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.MaintainPalette">
+            <summary>
+            <para>Whether or not you would like to maintain the original palette.</para>
+            <remarks>This keeps the original colorpalette which is great for resizing GIF and PNG.</remarks>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.Clip">
+            <summary>
+            <para>Whether or not you would like the image to be clipped to size.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.Quantize">
+            <summary>
+            <para>Whether or not you would like to quantize your GIF images.</para>
+            <remarks>It greatly enhances the quality at the cost of processingtime.</remarks>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.Brightness">
+            <summary>
+            <para>Adjust the brightness of your image.</para>
+            <remarks>Choose a value between -1 and 1 where 0 is default.</remarks>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.Contrast">
+            <summary>
+            <para>Adjust the contrast of your image.</para>
+            <remarks>Choose a value between 0 and 3 where 1 is default.</remarks>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.Opacity">
+            <summary>
+            <para>Adjust the opacity of your image.</para>
+            <remarks>Choose a value between 0 and 1 where 0 is default.</remarks>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.ServerCacheTimeout">
+            <summary>
+            <para>Whether or not you would like the output cached. Can be very powerfull but be shure to know what you're doing. Don't cache 300 large images.</para>
+            <para>Use the ImageCacheController property to define the cache controller that's being used.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.ClientCacheTimeout">
+            <summary>
+            Gets or sets the client cache timeout in minutes.
+            </summary>
+            <value>The client cache timeout.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.SaveName">
+            <summary>
+            <para>Gets or sets the preset name in the Save dialog on 'Save image as'.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.Copyright">
+            <summary>
+            <para>Gets or sets the copyright text.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.CopyrightSize">
+            <summary>
+            <para>The fontsize for the copyright text.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.EncryptSrc">
+            <summary>
+            <para>Whether or not you would like the src of the image to be encrypted. It helps in preventing download of the original image.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.DisableRightClick">
+            <summary>
+            <para>Whether or not you would like to disable right mouse button. Works only if JavaScript is enabled.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.LeechProtect">
+            <summary>
+            <para>Whether or not you would like to protect your images from leechers / deeplinkers.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.CustomTransform">
+            <summary>
+            <para>Gets or sets the custom image transform to apply.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageSettings.CustomData">
+            <summary>
+            Gets or sets the custom data to pass to your the participating ICustomDataConsumers.
+            </summary>
+            <value>The custom data.</value>
+        </member>
+        <member name="T:Wmb.Web.ImageHandler">
+            <summary>
+            The ImageHandler handles all requests for resized Images.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            Enables processing of HTTP Web requests by a custom HttpHandler that implements the <see cref="T:System.Web.IHttpHandler"/> interface.
+            </summary>
+            <param name="context">An <see cref="T:System.Web.HttpContext"/> object that provides references to the intrinsic server objects (for example, Request, Response, Session, and Server) used to service HTTP requests.</param>
+        </member>
+        <member name="M:Wmb.Web.ImageHandler.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageHandler.IsReusable">
+            <summary>
+            Gets a value indicating whether another request can use the <see cref="T:System.Web.IHttpHandler"/> instance.
+            </summary>
+            <value></value>
+            <returns>true if the <see cref="T:System.Web.IHttpHandler"/> instance is reusable; otherwise, false.</returns>
+        </member>
+        <member name="T:Wmb.Web.BetterImageConfigurationSection">
+            <summary>
+            The IdealConfigurationSection is there to set some default options for Ideal transactions.
+            </summary>
+            <example>This is a sample web.config
+            <code source="Ideal.Configuration.IdealConfigurationSection.Code.xml" lang="xml" /> 
+            </example>
+        </member>
+        <member name="M:Wmb.Web.BetterImageConfigurationSection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.BetterImageConfigurationSection"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.BetterImageConfigurationSection.GetImageCacheBrokerClassName(System.String)">
+            <summary>
+            Gets the name of the image cache broker class and the output cache provider it uses.
+            </summary>
+            <param name="imageCacheBrokerName">Name of the image cache broker.</param>
+            <returns>The class name of the ImageCacheBroker</returns>
+        </member>
+        <member name="M:Wmb.Web.BetterImageConfigurationSection.GetImageRetrieverClassName(System.String)">
+            <summary>
+            Gets the name of the image retriever class.
+            </summary>
+            <param name="imageRetrieverName">Name of the image retriever.</param>
+            <returns>The class name of the ImageRetriever</returns>
+        </member>
+        <member name="M:Wmb.Web.BetterImageConfigurationSection.GetImageTransformClassName(System.String)">
+            <summary>
+            Gets the full class name of the image transform class.
+            </summary>
+            <param name="imageTransformName">Name of the image transform.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Current">
+            <summary>
+            Gets the current BetterImageConfigurationSection.
+            </summary>
+            <value>The current BetterImageConfigurationSection.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.ImageCacheBroker">
+            <summary>
+            Gets the name of the default image cache broker class to use for caching your images and their metadata
+            </summary>
+            <value>The image cache broker.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.ImageCacheBrokers">
+            <summary>
+            Gets the image cache brokers collection.
+            </summary>
+            <value>The image cache brokers.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.ImageRetriever">
+            <summary>
+            Gets the name of the default image retriever class to use for retrieving your images
+            </summary>
+            <value>The image retriever.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.ImageRetrievers">
+            <summary>
+            Gets the image retrievers collection.
+            </summary>
+            <value>The image retrievers.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.ImageTransforms">
+            <summary>
+            Gets the image transforms collection.
+            </summary>
+            <value>The image transforms.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.ImageHandler">
+            <summary>
+            Gets the url of image handler.
+            </summary>
+            <value>The url of the image handler.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.MaxWidth">
+            <summary>
+            Gets the maximum width of the images.
+            </summary>
+            <value>0</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.MaxHeight">
+            <summary>
+            Gets the maximum height of the images.
+            </summary>
+            <value>0</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.GraphicsQuality">
+            <summary>
+            Gets the resize quality of the images.
+            </summary>
+            <value>The resize quality of the images.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.OutputQuality">
+            <summary>
+            Gets the output quality of the images. Works on jpeg images only!
+            </summary>
+            <value>The output quality.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Grayscale">
+            <summary>
+            Whether or not you would like the images grayscaled.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Negative">
+            <summary>
+            Whether or not you would like a negative of the images.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Sepia">
+            <summary>
+            Whether or not you would like to turn your images into sepia.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.MaintainPalette">
+            <summary>
+            Whether or not you would like to maintain the original palette. This keeps the original colorpalette which is great for resizing GIF and PNG.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Clip">
+            <summary>
+            Whether or not you would like the images to be clipped to size.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Quantize">
+            <summary>
+            Gets a value indicating whether or not you would like to quantize your GIF images. It greatly enhances the quality at the cost of processingtime.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Brightness">
+            <summary>
+            Adjust the brightness of your images. Choose a value between -1 and 1 where 0 is default.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Contrast">
+            <summary>
+            Adjust the contrast of your image. Choose a value between 0 and 3 where 1 is default.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Opacity">
+            <summary>
+            Adjust the opacity of your image. Choose a value between 0 and 1 where 0 is default.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.ServerCacheTimeout">
+            <summary>
+            Gets the server cache timeout in minutes.
+            </summary>
+            <value>The server cache timeout.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.ClientCacheTimeout">
+            <summary>
+            Gets the client cache timeout in minutes.
+            </summary>
+            <value>The client cache timeout.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.SaveName">
+            <summary>
+            Gets or sets the preset name in the Save dialog on 'Save image as'.
+            </summary>
+            <value>The save name.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Copyright">
+            <summary>
+            Gets the copyright text.
+            </summary>
+            <value>The copyright text.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.CopyrightSize">
+            <summary>
+            Gets the fontsize for the copyright text.
+            </summary>
+            <value>The fontsize for the copyright text.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.EncryptSrc">
+            <summary>
+            Gets a value indicating whether or not you would like the src of the image to be encrypted. It helps in preventing download of the original image.
+            </summary>
+            <value><c>true</c> if you want to encrypt the source; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.DisableRightClick">
+            <summary>
+            Gets a value indicating whether or not you would like to disable right mouse button. Works only if JavaScript is enabled.
+            </summary>
+            <value><c>true</c> if you would like to disable right click; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.LeechProtect">
+            <summary>
+            Gets a value indicating whether or not you would like to protect your images from leechers / deeplinkers.
+            </summary>
+            <value><c>true</c> if you would like to leech protect; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.CustomTransform">
+            <summary>
+            Gets the custom transform.
+            </summary>
+            <value>The custom transform.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.CustomData">
+            <summary>
+            Gets the custom data.
+            </summary>
+            <value>The custom transform.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Password">
+            <summary>
+            Gets the password that's used for encryption.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="P:Wmb.Web.BetterImageConfigurationSection.Salt">
+            <summary>
+            Gets the salt that's used for encryption.
+            </summary>
+            <value>The salt.</value>
+        </member>
+        <member name="T:Wmb.Web.EcryptionUtility">
+            <summary>
+            The StringUtility class holds the extensions and/or helpermethods for the String class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.EcryptionUtility.PasswordEncrypt(System.Byte[],System.String,System.String)">
+            <summary>
+            Encrypts the value by password and salt.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="password">The password.</param>
+            <param name="salt">The salt.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.EcryptionUtility.PasswordDecrypt(System.Byte[],System.String,System.String)">
+            <summary>
+            Decrypts the value by password and salt.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="password">The password.</param>
+            <param name="salt">The salt.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.EcryptionUtility.UrlEncodedPasswordEncrypt(System.String,System.String,System.String)">
+            <summary>
+            Ecrypts the value to a url encoded string.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="password">The password.</param>
+            <param name="salt">The salt.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.EcryptionUtility.UrlEncodedPasswordDecrypt(System.String,System.String,System.String)">
+            <summary>
+            Decrypts the url encoded value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="password">The password.</param>
+            <param name="salt">The salt.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.ImageTransformFactory.Create(System.String)">
+            <summary>
+            Creates the image transform.
+            </summary>
+            <param name="typeName">Name of the type.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Wmb.Web.Caching.WebOutputCacheProvider">
+            <summary>
+            The WebOutputCacheProvider class uses HttpContext.Current.Cache as the cache repository
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.Caching.WebOutputCacheProvider.Add(System.String,System.Object,System.DateTime)">
+            <summary>
+            Inserts the specified entry into the output cache.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="entry">The entry.</param>
+            <param name="utcExpiry">The UTC expiry.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.Caching.WebOutputCacheProvider.Get(System.String)">
+            <summary>
+            Returns a reference to the specified entry in the output cache.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Web.Caching.WebOutputCacheProvider.Remove(System.String)">
+            <summary>
+            Removes the specified entry from the output cache.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:Wmb.Web.Caching.WebOutputCacheProvider.Set(System.String,System.Object,System.DateTime)">
+            <summary>
+            Inserts the specified entry into the output cache, overwriting the entry if it is already cached.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="entry">The entry.</param>
+            <param name="utcExpiry">The UTC expiry.</param>
+        </member>
+        <member name="T:Wmb.Web.ICustomDataConsumer">
+            <summary>
+            This interface enable the developer to pass custom parameters to custom ImageRetrievers, ImageTransforms and CacheControllers
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ICustomDataConsumer.SetCustomData(System.String)">
+            <summary>
+            Sets the custom data that this consumer consumes.
+            </summary>
+            <param name="data">The data.</param>
+        </member>
+        <member name="T:Wmb.Web.ImageRetrieverCollection">
+            <summary>
+            Represents a collection of image retrievers in the configuration.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageRetrieverCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.ImageRetrieverCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageRetrieverCollection.CreateNewElement">
+            <summary>
+            When overridden in a derived class, creates a new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:Wmb.Web.ImageRetrieverCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="T:Wmb.Web.WebControls.BetterImageButton">
+            <summary>
+            <para>BetterImage control inherits from System.Web.UI.WebControls.Image</para>
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.WebControls.BetterImageButton.DataBindChildren">
+            <summary>
+            Binds a data source to the server control's child controls.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.WebControls.BetterImageButton.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.WebControls.BetterImageButton.LoadViewState(System.Object)">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.WebControls.BetterImageButton.SaveViewState">
+            <exclude />
+        </member>
+        <member name="M:Wmb.Web.WebControls.BetterImageButton.TrackViewState">
+            <exclude />
+        </member>
+        <member name="P:Wmb.Web.WebControls.BetterImageButton.ImageSettings">
+            <summary>
+            <para>The ImageSettings for the ImageHandler.</para>
+            </summary>
+        </member>
+        <member name="T:Wmb.Web.Caching.ImageCacheBroker">
+            <summary>
+            The ImageCacheBroker class handles the caching and retrieval of images and their metadata from and to the given OutputCacheProvider
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.Caching.ImageCacheBroker.#ctor(System.String,System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.Caching.ImageCacheBroker"/> class.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="utcExpiry">The UTC expiry.</param>
+        </member>
+        <member name="M:Wmb.Web.Caching.ImageCacheBroker.GetImageMetadata">
+            <summary>
+            Gets the image metadata.
+            </summary>
+            <returns>
+            The image metadata that's currently in cache.
+            </returns>
+        </member>
+        <member name="M:Wmb.Web.Caching.ImageCacheBroker.AddImageMetadata(Wmb.Web.ImageMetadata)">
+            <summary>
+            Adds the image metadata to the cache.
+            </summary>
+            <param name="imageMetadata">The image metadata that is to be added to the cache.</param>
+        </member>
+        <member name="M:Wmb.Web.Caching.ImageCacheBroker.GetImageBytes">
+            <summary>
+            Gets the image bytes.
+            </summary>
+            <returns>
+            The image bytes that are currently in cache.
+            </returns>
+        </member>
+        <member name="M:Wmb.Web.Caching.ImageCacheBroker.AddImageBytes(System.Byte[])">
+            <summary>
+            Adds the image bytes to the cache.
+            </summary>
+            <param name="value">The image bytes that are to be added to the cache.</param>
+        </member>
+        <member name="P:Wmb.Web.Caching.ImageCacheBroker.OutputCacheProvider">
+            <summary>
+            Gets the output cache provider.
+            </summary>
+            <value>The output cache provider.</value>
+        </member>
+        <member name="P:Wmb.Web.Caching.ImageCacheBroker.CacheImageMetadata">
+            <summary>
+            Gets a value indicating whether this ImageCacheBroker caches image metadata.
+            </summary>
+            <value><c>true</c> if [cache image metadata]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Wmb.Web.Caching.ImageCacheBroker.CacheImageBytes">
+            <summary>
+            Gets a value indicating whether this ImageCacheBroker caches image bytes.
+            </summary>
+            <value><c>true</c> if [cache image bytes]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Wmb.Web.ImageRetrieverFactory.Create(System.String,System.String)">
+            <summary>
+            Creates the image retriever.
+            </summary>
+            <param name="source">The source.</param>
+            <param name="typeName">Name of the type.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Wmb.Web.ImageCacheBrokerElement">
+            <summary>
+            The image cache broker element represents a reference to an image cache broker class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageCacheBrokerElement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.ImageCacheBrokerElement"/> class.
+            </summary>
+        </member>
+        <member name="P:Wmb.Web.ImageCacheBrokerElement.Name">
+            <summary>
+            Gets or sets the name to refer to the image cache broker class.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Wmb.Web.ImageCacheBrokerElement.Class">
+            <summary>
+            Gets or sets the fully qualified domain name of the class.
+            </summary>
+            <value>The class.</value>
+        </member>
+        <member name="T:Wmb.Web.ImageCacheBrokerCollection">
+            <summary>
+            Represents a collection of image cache brokers in the configuration.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageCacheBrokerCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.ImageCacheBrokerCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.ImageCacheBrokerCollection.CreateNewElement">
+            <summary>
+            When overridden in a derived class, creates a new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:Wmb.Web.ImageCacheBrokerCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:Wmb.Web.Caching.ImageCacheBrokerFactory.Create(System.String,System.String,System.DateTime)">
+            <summary>
+            Creates image cache broker by the specified type name.
+            </summary>
+            <param name="typeName">Name of the type.</param>
+            <param name="key">The key.</param>
+            <param name="utcExpiry">The UTC expiry.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Wmb.Web.Caching.WebImageCacheBroker">
+            <summary>
+            The WebImageCacheBroker uses the WebOutputCacheProvider for caching image data. 
+            </summary>
+        </member>
+        <member name="M:Wmb.Web.Caching.WebImageCacheBroker.#ctor(System.String,System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Web.Caching.WebImageCacheBroker"/> class.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="utcExpiry">The UTC expiry.</param>
+        </member>
+        <member name="P:Wmb.Web.Caching.WebImageCacheBroker.OutputCacheProvider">
+            <summary>
+            Gets the output cache provider.
+            </summary>
+            <value>The output cache provider.</value>
+        </member>
+    </members>
+</doc>

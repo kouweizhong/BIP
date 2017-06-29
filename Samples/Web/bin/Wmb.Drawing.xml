@@ -1,0 +1,1138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wmb.Drawing</name>
+    </assembly>
+    <members>
+        <member name="T:Wmb.Drawing.GraphicsQuality">
+            <summary>
+            GraphicsQuality enumerator is used for determining the quality of the graphics object.
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.GraphicsQuality.Default">
+            <summary>
+            <para>PixelOffsetMode.Default; SmoothingMode.None; InterpolationMode.Bilinear;</para>
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.GraphicsQuality.Low">
+            <summary>
+            <para>PixelOffsetMode.HighSpeed; SmoothingMode.HighSpeed; InterpolationMode.Low;</para>
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.GraphicsQuality.Medium">
+            <summary>
+            <para>PixelOffsetMode.Half; SmoothingMode.HighQuality; InterpolationMode.High;</para>
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.GraphicsQuality.High">
+            <summary>
+            <para>PixelOffsetMode.HighQuality; SmoothingMode.AntiAlias; InterpolationMode.HighQualityBicubic;</para>
+            </summary>
+        </member>
+        <member name="T:Wmb.Drawing.CopyrightTransform">
+            <summary>
+            The copyright transform can be used to add a copyright text to an image.
+            </summary>
+        </member>
+        <member name="T:Wmb.Drawing.ImageTransform">
+            <summary>
+            <para>The abstract ImageTransform class is the base class to be used for all image transform classes.</para>
+            <para>Use the <see cref="T:System.Drawing.Graphics"/> class to transform an image. Do not asign a new <see cref="T:System.Drawing.Image"/> to the Image parameter in the Transform method. This might cause serious memory leaks!</para>
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.ImageTransform.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.ImageTransform"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.ImageTransform.Transform(System.Drawing.Image)">
+            <summary>
+            Transforms the specified image.
+            </summary>
+            <param name="image">The image.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageTransform.TransformCore(System.Drawing.Image)">
+            <summary>
+            Transforms the specified image.
+            </summary>
+            <param name="image">The image to transform.</param>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransform.Position">
+            <summary>
+            Gets the position where the transform should took place in respect to other transforms.
+            </summary>
+            <value>1000</value>
+        </member>
+        <member name="M:Wmb.Drawing.CopyrightTransform.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.CopyrightTransform"/> class.
+            </summary>
+            <param name="copyrightText">The copyright text.</param>
+        </member>
+        <member name="M:Wmb.Drawing.CopyrightTransform.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.CopyrightTransform"/> class.
+            </summary>
+            <param name="copyrightText">The copyright text.</param>
+            <param name="fontSize">Size of the font.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the copyrightText parameter is null or string.Empty.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the fontSize parameter is less than 0.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.CopyrightTransform.TransformCore(System.Drawing.Image)">
+            <summary>
+            Transforms the specified image.
+            </summary>
+            <param name="image">The image to transform.</param>
+            <exception cref="T:System.ArgumentException">Thrown when the image has an indexed pixel format.</exception>
+        </member>
+        <member name="P:Wmb.Drawing.CopyrightTransform.Position">
+            <summary>
+            Gets the position where the transform should took place in respect to other transforms.
+            </summary>
+            <value>100</value>
+        </member>
+        <member name="P:Wmb.Drawing.CopyrightTransform.CopyrightText">
+            <summary>
+            Gets or sets the copyright text.
+            </summary>
+            <value>The copyright text.</value>
+            <exception cref="T:System.ArgumentNullException">Thrown when the value is null or string.Empty.</exception>
+        </member>
+        <member name="P:Wmb.Drawing.CopyrightTransform.FontSize">
+            <summary>
+            Gets or sets the size of the font.
+            </summary>
+            <value>The size of the font.</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the value is less than 0.</exception>
+        </member>
+        <member name="T:Wmb.Drawing.OctreeQuantizer">
+            <summary>
+            Quantizes by using an Octree
+            </summary>
+        </member>
+        <member name="T:Wmb.Drawing.Quantizer">
+            <summary>
+            The abstract base class for both the OctreeQuantizer and PaletteQuantizer
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.#ctor(System.Boolean)">
+            <summary>
+            Construct the quantizer
+            </summary>
+            <param name="singlePass">If true, the quantization only needs to loop through the source pixels once</param>
+            <remarks>
+            If you construct this class with a true value for singlePass, then the code will, when quantizing your image,
+            only call the 'QuantizeImage' function. If two passes are required, the code will call 'InitialQuantizeImage'
+            and then 'QuantizeImage'.
+            </remarks>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.Quantize(System.Drawing.Image)">
+            <summary>
+            Quantize an image and return the resulting output bitmap
+            </summary>
+            <param name="source">The image to quantize</param>
+            <returns>A quantized version of the image</returns>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.FirstPass(System.Drawing.Imaging.BitmapData,System.Int32,System.Int32)">
+            <summary>
+            Execute the first pass through the pixels in the image
+            </summary>
+            <param name="sourceData">The source data</param>
+            <param name="width">The width in pixels of the image</param>
+            <param name="height">The height in pixels of the image</param>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.SecondPass(System.Drawing.Imaging.BitmapData,System.Drawing.Bitmap,System.Int32,System.Int32,System.Drawing.Rectangle)">
+            <summary>
+            Execute a second pass through the bitmap
+            </summary>
+            <param name="sourceData">The source bitmap, locked into memory</param>
+            <param name="output">The output bitmap</param>
+            <param name="width">The width in pixels of the image</param>
+            <param name="height">The height in pixels of the image</param>
+            <param name="bounds">The bounding rectangle</param>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.InitialQuantizePixel(Wmb.Drawing.Quantizer.Color32)">
+            <summary>
+            Override this to process the pixel in the first pass of the algorithm
+            </summary>
+            <param name="pixel">The pixel to quantize</param>
+            <remarks>
+            This function need only be overridden if your quantize algorithm needs two passes,
+            such as an Octree quantizer.
+            </remarks>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.QuantizePixel(Wmb.Drawing.Quantizer.Color32)">
+            <summary>
+            Override this to process the pixel in the second pass of the algorithm
+            </summary>
+            <param name="pixel">The pixel to quantize</param>
+            <returns>The quantized value</returns>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.GetPalette(System.Drawing.Imaging.ColorPalette)">
+            <summary>
+            Retrieve the palette for the quantized image
+            </summary>
+            <param name="original">Any old palette, this is overrwritten</param>
+            <returns>The new color palette</returns>
+        </member>
+        <member name="F:Wmb.Drawing.Quantizer.singlePass">
+            <summary>
+            Flag used to indicate whether a single pass or two passes are needed for quantization.
+            </summary>
+        </member>
+        <member name="T:Wmb.Drawing.Quantizer.Color32">
+            <summary>
+            Struct that defines a 32 bpp colour
+            </summary>
+            <remarks>
+            This struct is used to read data from a 32 bits per pixel image
+            in memory, and is ordered in this manner as this is the way that
+            the data is layed out in memory
+            </remarks>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.Color32.#ctor(System.IntPtr)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.Quantizer.Color32"/> struct.
+            </summary>
+            <param name="sourcePixel">The source pixel.</param>
+        </member>
+        <member name="F:Wmb.Drawing.Quantizer.Color32.Blue">
+            <summary>
+            Holds the blue component of the colour
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.Quantizer.Color32.Green">
+            <summary>
+            Holds the green component of the colour
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.Quantizer.Color32.Red">
+            <summary>
+            Holds the red component of the colour
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.Quantizer.Color32.Alpha">
+            <summary>
+            Holds the alpha component of the colour
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.Quantizer.Color32.ARGB">
+            <summary>
+            Permits the color32 to be treated as an int32
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.Color32.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+            	<c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.Color32.op_Equality(Wmb.Drawing.Quantizer.Color32,Wmb.Drawing.Quantizer.Color32)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.Color32.op_Inequality(Wmb.Drawing.Quantizer.Color32,Wmb.Drawing.Quantizer.Color32)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:Wmb.Drawing.Quantizer.Color32.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="P:Wmb.Drawing.Quantizer.Color32.Color">
+            <summary>
+            Return the color for this Color32 object
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.#ctor">
+            <summary>
+            Construct the octree quantizer with 255 8 bit colors
+            </summary>
+            <remarks>
+            The Octree quantizer is a two pass algorithm. The initial pass sets up the octree,
+            the second pass quantizes a color based on the nodes in the tree
+            </remarks>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Construct the octree quantizer
+            </summary>
+            <remarks>
+            The Octree quantizer is a two pass algorithm. The initial pass sets up the octree,
+            the second pass quantizes a color based on the nodes in the tree
+            </remarks>
+            <param name="maxColors">The maximum number of colors to return</param>
+            <param name="maxColorBits">The number of significant bits</param>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.InitialQuantizePixel(Wmb.Drawing.Quantizer.Color32)">
+            <summary>
+            Process the pixel in the first pass of the algorithm
+            </summary>
+            <param name="pixel">The pixel to quantize</param>
+            <remarks>
+            This function need only be overridden if your quantize algorithm needs two passes,
+            such as an Octree quantizer.
+            </remarks>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.QuantizePixel(Wmb.Drawing.Quantizer.Color32)">
+            <summary>
+            Override this to process the pixel in the second pass of the algorithm
+            </summary>
+            <param name="pixel">The pixel to quantize</param>
+            <returns>The quantized value</returns>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.GetPalette(System.Drawing.Imaging.ColorPalette)">
+            <summary>
+            Retrieve the palette for the quantized image
+            </summary>
+            <param name="original">Any old palette, this is overrwritten</param>
+            <returns>The new color palette</returns>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.octree">
+            <summary>
+            Stores the tree
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.maxColors">
+            <summary>
+            Maximum allowed color depth
+            </summary>
+        </member>
+        <member name="T:Wmb.Drawing.OctreeQuantizer.Octree">
+            <summary>
+            Class which does the actual quantization
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.#ctor(System.Int32)">
+            <summary>
+            Construct the octree
+            </summary>
+            <param name="maxColorBits">The maximum number of significant bits in the image</param>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.AddColor(Wmb.Drawing.Quantizer.Color32)">
+            <summary>
+            Add a given color value to the octree
+            </summary>
+            <param name="pixel"></param>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.Reduce">
+            <summary>
+            Reduce the depth of the tree
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.TrackPrevious(Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode)">
+            <summary>
+            Keep track of the previous node that was quantized
+            </summary>
+            <param name="node">The node last quantized</param>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.Palletize(System.Int32)">
+            <summary>
+            Convert the nodes in the octree to a palette with a maximum of colorCount colors
+            </summary>
+            <param name="colorCount">The maximum number of colors</param>
+            <returns>An arraylist with the palettized colors</returns>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.GetPaletteIndex(Wmb.Drawing.Quantizer.Color32)">
+            <summary>
+            Get the palette index for the passed color
+            </summary>
+            <param name="pixel"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.mask">
+            <summary>
+            Mask used when getting the appropriate pixels for a given node
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.root">
+            <summary>
+            The root of the octree
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.leafCount">
+            <summary>
+            Number of leaves in the tree
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.reducibleNodes">
+            <summary>
+            Array of reducible nodes
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.maxColorBits">
+            <summary>
+            Maximum number of significant bits in the image
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.previousNode">
+            <summary>
+            Store the last node quantized
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.previousColor">
+            <summary>
+            Cache the previous color quantized
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.OctreeQuantizer.Octree.Leaves">
+            <summary>
+            Get/Set the number of leaves in the tree
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.OctreeQuantizer.Octree.ReducibleNodes">
+            <summary>
+            Return the array of reducible nodes
+            </summary>
+        </member>
+        <member name="T:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode">
+            <summary>
+            Class which encapsulates each node in the tree
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.#ctor(System.Int32,System.Int32,Wmb.Drawing.OctreeQuantizer.Octree)">
+            <summary>
+            Construct the node
+            </summary>
+            <param name="level">The level in the tree = 0 - 7</param>
+            <param name="colorBits">The number of significant color bits in the image</param>
+            <param name="octree">The tree to which this node belongs</param>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.AddColor(Wmb.Drawing.Quantizer.Color32,System.Int32,System.Int32,Wmb.Drawing.OctreeQuantizer.Octree)">
+            <summary>
+            Add a color into the tree
+            </summary>
+            <param name="pixel">The color</param>
+            <param name="colorBits">The number of significant color bits</param>
+            <param name="level">The level in the tree</param>
+            <param name="octree">The tree to which this node belongs</param>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.Reduce">
+            <summary>
+            Reduce this node by removing all of its children
+            </summary>
+            <returns>The number of leaves removed</returns>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.ConstructPalette(System.Collections.ArrayList,System.Int32@)">
+            <summary>
+            Traverse the tree, building up the color palette
+            </summary>
+            <param name="palette">The palette</param>
+            <param name="currentPaletteIndex">The current palette index</param>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.GetPaletteIndex(Wmb.Drawing.Quantizer.Color32,System.Int32)">
+            <summary>
+            Return the palette index for the passed color
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.Increment(Wmb.Drawing.Quantizer.Color32)">
+            <summary>
+            Increment the pixel count and add to the color information
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.leaf">
+            <summary>
+            Flag indicating that this is a leaf node
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.pixelCount">
+            <summary>
+            Number of pixels in this node
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.red">
+            <summary>
+            Red component
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.green">
+            <summary>
+            Green Component
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.blue">
+            <summary>
+            Blue component
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.children">
+            <summary>
+            Pointers to any child nodes
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.nextReducible">
+            <summary>
+            Pointer to next reducible node
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.paletteIndex">
+            <summary>
+            The index of this node in the palette
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.OctreeQuantizer.Octree.OctreeNode.NextReducible">
+            <summary>
+            Get/Set the next reducible node
+            </summary>
+        </member>
+        <member name="T:Wmb.Drawing.ImageUtility">
+            <summary>
+            <para>The ImageUtility class holds the extensions and/or helpermethods for the Image class.</para>
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.Transform(System.Drawing.Image,Wmb.Drawing.ImageTransform)">
+            <summary>
+            <para>Transforms the specified image.</para>
+            </summary>
+            <param name="image">The image.</param>
+            <param name="imageTransform">The image transform.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the imageTransform parameter is null.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.Transform(System.Drawing.Image,System.Collections.Generic.IEnumerable{Wmb.Drawing.ImageTransform})">
+            <summary>
+            <para>Transforms the specified image.</para>
+            </summary>
+            <param name="image">The image.</param>
+            <param name="imageTransforms">The image transforms.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the imageTransforms parameter is null.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.ApplyColorMatrix(System.Drawing.Image,System.Drawing.Imaging.ColorMatrix)">
+            <summary>
+            <para>Applies a color matrix to an Image without clearing the graphics object.</para>
+            </summary>
+            <param name="image">The Image to apply the maxtrix to.</param>
+            <param name="colorMatrix">The color matrix.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the colorMatrix parameter is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when the image has an indexed pixel format.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.ApplyColorMatrix(System.Drawing.Image,System.Drawing.Imaging.ColorMatrix,System.Boolean)">
+            <summary>
+            <para>Applies a color matrix to an Image.</para>
+            </summary>
+            <param name="image">The Image to apply the maxtrix to.</param>
+            <param name="colorMatrix">The color matrix.</param>
+            <param name="clearGraphics">Whether or not you would like to clear the graphics object before redrawing over it. This is necesary if you adjust the Opacity for instance.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the colorMatrix parameter is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when the image has an indexed pixel format.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.OctreeQuantize(System.Drawing.Image)">
+            <summary>
+            <para>Returns an octree quantized Image with a ColorPalette of 255, 8 bit colors.</para>
+            </summary>
+            <param name="image">The Image on which to apply an octree quantization.</param>
+            <returns>The quantized Image</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.OctreeQuantize(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            <para>Returns an octree quantized Image.</para>
+            </summary>
+            <param name="image">The Image on which to apply an octree quantization.</param>
+            <param name="maxColors">The maximum amount of colors to be used for the ColorPalette with a maximum of 255.</param>
+            <param name="maxColorBits">The maximum amount of bits the colors in the ColorPalette can be with a maximum of 8.</param>
+            <returns>The quantized Image.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the maxColors parameter greater than 256.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the maxColorBits parameter is less than 1 or greater than 8.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.PaletteQuantize(System.Drawing.Image,System.Collections.ICollection)">
+            <summary>
+            <para>Returns a palette quantized Image.</para>
+            </summary>
+            <param name="image">The image on which to apply a palette quantization.</param>
+            <param name="palette">The palette being used for this quantization.</param>
+            <returns>The quantized Image.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the palette parameter is null or does not contain any colors.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.GetResizedImageFromStream(System.IO.Stream,System.Int32,System.Int32)">
+            <summary>
+            <para>Gets a resized Image from a Stream. With GraphicsQuality.Medium en not maintaining the(if any) palette.</para>
+            </summary>
+            <param name="stream">The Stream containing an Image</param>
+            <param name="maxWidth">The maximum width for the resulting Image. Set to 0 if there's no maximum width.</param>
+            <param name="maxHeight">The maximum height for the resulting Image. Set to 0 if there's no maximum height.</param>
+            <returns>Image</returns>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.GetResizedImageFromStream(System.IO.Stream,System.Int32,System.Int32,Wmb.Drawing.GraphicsQuality)">
+            <summary>
+            <para>Gets a resized Image from a Stream. Not maintaining the(if any) palette.</para>
+            </summary>
+            <param name="stream">The Stream containing an Image</param>
+            <param name="maxWidth">The maximum width for the resulting Image. Set to 0 if there's no maximum width.</param>
+            <param name="maxHeight">The maximum height for the resulting Image. Set to 0 if there's no maximum height.</param>
+            <param name="graphicsQuality">The GraphicsQuality for the resulting Image.</param>
+            <returns>Image</returns>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.GetResizedImagedFromStream(System.IO.Stream,System.Int32,System.Int32,Wmb.Drawing.GraphicsQuality,System.Boolean)">
+            <summary>
+            <para>Gets a resized Image from a Stream.</para>
+            </summary>
+            <param name="stream">The Stream containing an image</param>
+            <param name="maxWidth">The maximum width for the resulting Image. Set to 0 if there's no maximum width.</param>
+            <param name="maxHeight">The maximum height for the resulting Image. Set to 0 if there's no maximum height.</param>
+            <param name="graphicsQuality">The GraphicsQuality for the resulting Image.</param>
+            <param name="maintainPalette">If set to <c>true</c> the(if any) palette will be maintained. Transparency will be saved.</param>
+            <returns>The resized Image</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the stream parameter is null</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.Resize(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            <para>Returns a resized Image.</para>
+            </summary>
+            <param name="image">The Image to resize.</param>
+            <param name="maxWidth">The maximum width for the resulting Image. Set to 0 if there's no maximum width.</param>
+            <param name="maxHeight">The maximum height for the resulting Image. Set to 0 if there's no maximum height.</param>
+            <returns>The resized Image</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.Resize(System.Drawing.Image,System.Int32,System.Int32,Wmb.Drawing.GraphicsQuality)">
+            <summary>
+            <para>Returns a resized Image.</para>
+            </summary>
+            <param name="image">The Image to resize.</param>
+            <param name="maxWidth">The maximum width for the resulting Image. Set to 0 if there's no maximum width.</param>
+            <param name="maxHeight">The maximum height for the resulting Image. Set to 0 if there's no maximum height.</param>
+            <param name="graphicsQuality">The graphics quality for the resulting Image.</param>
+            <returns>The resized Image</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.Resize(System.Drawing.Image,System.Int32,System.Int32,Wmb.Drawing.GraphicsQuality,System.Boolean)">
+            <summary>
+            <para>Returns a resized Image.</para>
+            </summary>
+            <param name="image">The Image to resize.</param>
+            <param name="maxWidth">The maximum width for the resulting Image. Set to 0 if there's no maximum width.</param>
+            <param name="maxHeight">The maximum height for the resulting Image. Set to 0 if there's no maximum height.</param>
+            <param name="graphicsQuality">The graphics quality for the resulting Image.</param>
+            <param name="maintainPalette">If set to <c>true</c> the(if any) palette will be maintained. Transparency will be saved.</param>
+            <returns>The resized Image</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.Clip(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            Clips the specified image.
+            </summary>
+            <param name="image">The image to clip.</param>
+            <param name="maxWidth">The maximum width for the resulting Image. Set to 0 if there's no maximum width.</param>
+            <param name="maxHeight">The maximum height for the resulting Image. Set to 0 if there's no maximum height.</param>
+            <returns>The clipped Image</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.Clip(System.Drawing.Image,System.Int32,System.Int32,Wmb.Drawing.GraphicsQuality)">
+            <summary>
+            <para>Clips the specified image.</para>
+            </summary>
+            <param name="image">The image to clip.</param>
+            <param name="maxWidth">The maximum width for the resulting Image. Set to 0 if there's no maximum width.</param>
+            <param name="maxHeight">The maximum height for the resulting Image. Set to 0 if there's no maximum height.</param>
+            <param name="graphicsQuality">The graphics quality for the resulting Image.</param>
+            <returns>The clipped Image</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.Clip(System.Drawing.Image,System.Int32,System.Int32,Wmb.Drawing.GraphicsQuality,System.Boolean)">
+            <summary>
+            <para>Clips the specified image.</para>
+            </summary>
+            <param name="image">The image to clip.</param>
+            <param name="maxWidth">The maximum width for the resulting Image. Set to 0 if there's no maximum width.</param>
+            <param name="maxHeight">The maximum height for the resulting Image. Set to 0 if there's no maximum height.</param>
+            <param name="graphicsQuality">The graphics quality for the resulting Image.</param>
+            <param name="maintainPalette">If set to <c>true</c> the(if any) palette will be maintained. Transparency will be saved.</param>
+            <returns>The clipped Image</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.HasIndexedPixelFormat(System.Drawing.Image)">
+            <summary>
+            <para>Determines whether the specified image has an indexed pixel format.</para>
+            </summary>
+            <param name="image">The Image.</param>
+            <returns>
+            	<c>true</c> if the specified image has an indexed pixel format; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.Redraw(System.Drawing.Image,Wmb.Drawing.GraphicsQuality,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+            <para>Returns a redrawn Image.</para>
+            </summary>
+            <param name="image">The Image to redraw.</param>
+            <param name="graphicsQuality">The graphics quality for the resulting Image.</param>
+            <param name="pixelFormat">The pixel format for the resulting Image.</param>
+            <returns>The redrawn Image</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+            <exception cref="T:System.ArgumentException">Thrown when the pixel format of the image parameter is indexed</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.CalculateThumbSize(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            <para>Calculates the size for a thumbnail.</para>
+            </summary>
+            <param name="image">The Image of which to calculate the size for a thumbnail.</param>
+            <param name="maxWidth">The maximum width for the resulting thumbnail.</param>
+            <param name="maxHeight">The maximum height for the resulting thumbnail.</param>
+            <returns>The thumbnail Size</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.CalculateClippingSize(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            <para>Calculates the size of the clipping.</para>
+            </summary>
+            <param name="image">The image.</param>
+            <param name="maxWidth">Maximum width of the image.</param>
+            <param name="maxHeight">Maximum height of the image.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the maxWidth parameter is less than or equal to 0</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the maxHeight parameter is less than or equal to 0</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.CalculateClipRectangle(System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            <para>Calculates the clip rectangle.</para>
+            </summary>
+            <param name="image">The image.</param>
+            <param name="maxWidth">Maximum width of the image.</param>
+            <param name="maxHeight">Maximum height of the image.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the maxWidth parameter is less than or equal to 0.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the maxHeight parameter is less than or equal to 0.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.SaveToMemoryStream(System.Drawing.Image,System.IO.Stream,System.Drawing.Imaging.ImageFormat,System.Int64)">
+            <summary>
+            <para>Saves the Image to a Stream.</para>
+            </summary>
+            <param name="image">The Image you would like to save.</param>
+            <param name="stream">The Stream you would like to save the image to.</param>
+            <param name="imageFormat">The ImageFormat you would like to use.</param>
+            <param name="outputQuality">The output quality you would like to use. A value between 0L and 100L.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the stream parameter is null.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the imageFormat parameter is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the outputQuality parameter is less than 0 or greater than 100.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ImageUtility.Quantizeable(System.Drawing.Image)">
+            <summary>
+            Determines whether or not the image is quantizable.
+            </summary>
+            <param name="image">The image.</param>
+            <returns>True if the image is Quantizeable; otherwise false</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+        </member>
+        <member name="T:Wmb.Drawing.NegativeTransform">
+            <summary>
+            The negative transform can be used to turn an image into negative.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.NegativeTransform.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.NegativeTransform"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.NegativeTransform.TransformCore(System.Drawing.Image)">
+            <summary>
+            Transforms the specified image.
+            </summary>
+            <param name="image">The image to transform.</param>
+        </member>
+        <member name="P:Wmb.Drawing.NegativeTransform.Position">
+            <summary>
+            Gets the position where the transform should took place in respect to other transforms.
+            </summary>
+            <value>300</value>
+        </member>
+        <member name="P:Wmb.Drawing.NegativeTransform.CompressionMatrix">
+            <summary>
+            Gets the compression matrix.
+            </summary>
+            <value>The compression matrix.</value>
+        </member>
+        <member name="P:Wmb.Drawing.NegativeTransform.NegativeMatrix">
+            <summary>
+            Gets the negative matrix.
+            </summary>
+            <value>The negative matrix.</value>
+        </member>
+        <member name="P:Wmb.Drawing.NegativeTransform.DisableColorCompression">
+            <summary>
+            <para>Gets or sets a value indicating whether to disable color compression.</para>
+            <para>Color compression delivers a reversible negative a the loss of the the highest color values.</para>
+            </summary>
+            <value>
+            	<c>true</c> to disable color compression; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Wmb.Drawing.GrayscaleTransform">
+            <summary>
+            The grayscale transform can be used to turn an image into grayscale.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.GrayscaleTransform.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.GrayscaleTransform"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.GrayscaleTransform.TransformCore(System.Drawing.Image)">
+            <summary>
+            Transforms the specified image.
+            </summary>
+            <param name="image">The image to transform.</param>
+        </member>
+        <member name="P:Wmb.Drawing.GrayscaleTransform.Position">
+            <summary>
+            Gets the position where the transform should took place in respect to other transforms.
+            </summary>
+            <value>200</value>
+        </member>
+        <member name="P:Wmb.Drawing.GrayscaleTransform.GrayscaleMatrix">
+            <summary>
+            Gets the grayscale matrix.
+            </summary>
+            <value>The grayscale matrix.</value>
+        </member>
+        <member name="T:Wmb.Drawing.ImageFormatUtility">
+            <summary>
+            <para>The ImageFormatUtility class holds the extensions and/or helpermethods for the ImageFormat class.</para>
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.ImageFormatUtility.GetImageCodecInfo(System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            Gets the image codec info.
+            </summary>
+            <param name="imageFormat">The image format.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the imageFormat parameter is null.</exception>
+        </member>
+        <member name="T:Wmb.Drawing.ImageTransformCollection">
+            <summary>
+            An image transform collection is a collection of ImageTransform objects.
+            </summary>
+        </member>
+        <member name="T:Wmb.Drawing.ImageTransformer">
+            <summary>
+            The ImageFactory class is a so called aggregate component with which you can create resized and transformed images in the simplest way.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.ImageTransformer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.ImageTransformer"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.ImageTransformer.Transform(System.Drawing.Image)">
+            <summary>
+            Creates a new image from the specified input.
+            </summary>
+            <param name="image">The image.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the image parameter is null.</exception>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.GraphicsQuality">
+            <summary>
+            <para>The resize quality of the resulting image.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.Copyright">
+            <summary>
+            <para>Gets or sets the copyright text to write on the resulting image.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.CopyrightSize">
+            <summary>
+            <para>Gets or sets the size of the copyright text to write on the resulting image.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.MaxWidth">
+            <summary>
+            <para>The maximum width of the resulting image.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.MaxHeight">
+            <summary>
+            <para>The maximum height of the resulting image.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.Grayscale">
+            <summary>
+            <para>Whether or not you would like your resulting image to be grayscaled.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.Negative">
+            <summary>
+            <para>Whether or not you would like your resulting image to be a negative.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.Sepia">
+            <summary>
+            <para>Whether or not you would like to turn the resulting image into sepia.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.Clip">
+            <summary>
+            <para>Whether or not you would like the image to be clipped to size.</para>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.Quantize">
+            <summary>
+            <para>Whether or not you would like to quantize your GIF images.</para>
+            <remarks>It greatly enhances the quality at the cost of processingtime.</remarks>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.MaintainPalette">
+            <summary>
+            <para>Whether or not you would like to maintain the original palette.</para>
+            <remarks>This keeps the original colorpalette which is great for resizing GIF and PNG.</remarks>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.CustomTransforms">
+            <summary>
+            The custom transforms to apply after the default transforms have been applied.
+            </summary>
+            <value>The custom transforms.</value>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.Brightness">
+            <summary>
+            <para>The brightness of the resulting image.</para>
+            <remarks>Choose a value between -1 and 1 where 0 is default.</remarks>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.Contrast">
+            <summary>
+            <para>The contrast of the resulting image.</para>
+            <remarks>Choose a value between 0 and 3 where 1 is default.</remarks>
+            </summary>
+        </member>
+        <member name="P:Wmb.Drawing.ImageTransformer.Opacity">
+            <summary>
+            <para>The opacity of the resulting image.</para>
+            <remarks>Choose a value between 0 and 1 where 0 is default.</remarks>
+            </summary>
+        </member>
+        <member name="T:Wmb.Drawing.GraphicsUtility">
+            <summary>
+            The GraphicsUtility class holds the extensions and/or helpermethods for the Graphics class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.GraphicsUtility.ApplyGraphicsQualitySetting(System.Drawing.Graphics,Wmb.Drawing.GraphicsQuality)">
+            <summary>
+            Applies the graphics quality setting.
+            </summary>
+            <param name="graphics">The Graphics object which to apply the GraphicsQuality settings to.</param>
+            <param name="graphicsQuality">The GraphicsQuality to apply.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the graphics parameter is null</exception>
+        </member>
+        <member name="T:Wmb.Drawing.SepiaTransform">
+            <summary>
+            The sepia transform can be used to turn an image into sepia.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.SepiaTransform.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.SepiaTransform"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.SepiaTransform.TransformCore(System.Drawing.Image)">
+            <summary>
+            Transforms the specified image.
+            </summary>
+            <param name="image">The image to transform.</param>
+        </member>
+        <member name="P:Wmb.Drawing.SepiaTransform.Position">
+            <summary>
+            Gets the position where the transform should took place in respect to other transforms.
+            </summary>
+            <value>400</value>
+        </member>
+        <member name="P:Wmb.Drawing.SepiaTransform.SepiaMatrix">
+            <summary>
+            Gets the sepia matrix.
+            </summary>
+            <value>The sepia matrix.</value>
+        </member>
+        <member name="T:Wmb.Drawing.OpacityTransform">
+            <summary>
+            The opacity transform can be used to adjust the opacity of an image.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.OpacityTransform.CreateOpacityMatrix(System.Single)">
+            <summary>
+            Creates the opacity matrix.
+            </summary>
+            <param name="opacity">The opacity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Drawing.OpacityTransform.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.OpacityTransform"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.OpacityTransform.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.OpacityTransform"/> class.
+            </summary>
+            <param name="opacity">The opacity.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the opacity parameter less than 0 or greater than 1.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.OpacityTransform.TransformCore(System.Drawing.Image)">
+            <summary>
+            Transforms the specified image.
+            </summary>
+            <param name="image">The image to transform.</param>
+        </member>
+        <member name="P:Wmb.Drawing.OpacityTransform.Position">
+            <summary>
+            Gets the position where the transform should took place in respect to other transforms.
+            </summary>
+            <value>700</value>
+        </member>
+        <member name="P:Wmb.Drawing.OpacityTransform.Opacity">
+            <summary>
+            Gets or sets the opacity.
+            </summary>
+            <value>The opacity.</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the value is less than 0 or greater than 1.</exception>
+        </member>
+        <member name="T:Wmb.Drawing.BrightnessTransform">
+            <summary>
+            The brightness transform can be used to adjust the brightness of an image.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.BrightnessTransform.CreateBrightnessMatrix(System.Single)">
+            <summary>
+            Creates the brightness matrix.
+            </summary>
+            <param name="brightness">The brightness.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Drawing.BrightnessTransform.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.BrightnessTransform"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.BrightnessTransform.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.BrightnessTransform"/> class.
+            </summary>
+            <param name="brightness">The brightness.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the brightness parameter less than -1 or greater than 1.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.BrightnessTransform.TransformCore(System.Drawing.Image)">
+            <summary>
+            Transforms the specified image.
+            </summary>
+            <param name="image">The image to transform.</param>
+        </member>
+        <member name="P:Wmb.Drawing.BrightnessTransform.Position">
+            <summary>
+            Gets the position where the transform should took place in respect to other transforms.
+            </summary>
+            <value>500</value>
+        </member>
+        <member name="P:Wmb.Drawing.BrightnessTransform.Brightness">
+            <summary>
+            Gets or sets the brightness.
+            </summary>
+            <value>Value between -1 and 1</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the value is less than -1 or greater than 1.</exception>
+        </member>
+        <member name="T:Wmb.Drawing.PaletteQuantizer">
+            <summary>
+            Quantizes by using a palette.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.PaletteQuantizer.#ctor(System.Collections.ICollection)">
+            <summary>
+            Construct the palette quantizer
+            </summary>
+            <param name="palette">The color palette to quantize to</param>
+            <remarks>
+            Palette quantization only requires a single quantization step
+            </remarks>
+        </member>
+        <member name="M:Wmb.Drawing.PaletteQuantizer.QuantizePixel(Wmb.Drawing.Quantizer.Color32)">
+            <summary>
+            Override this to process the pixel in the second pass of the algorithm
+            </summary>
+            <param name="pixel">The pixel to quantize</param>
+            <returns>The quantized value</returns>
+        </member>
+        <member name="M:Wmb.Drawing.PaletteQuantizer.GetPalette(System.Drawing.Imaging.ColorPalette)">
+            <summary>
+            Retrieve the palette for the quantized image
+            </summary>
+            <param name="original">Any old palette, this is overrwritten</param>
+            <returns>The new color palette</returns>
+        </member>
+        <member name="F:Wmb.Drawing.PaletteQuantizer.colorMap">
+            <summary>
+            Lookup table for colors
+            </summary>
+        </member>
+        <member name="F:Wmb.Drawing.PaletteQuantizer.colors">
+            <summary>
+            List of all colors in the palette
+            </summary>
+        </member>
+        <member name="T:Wmb.Drawing.ContrastTransform">
+            <summary>
+            The contrast transform can be used to adjust the contrast of an image.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.ContrastTransform.CreateContrastMatrix(System.Single)">
+            <summary>
+            Creates the contrast matrix.
+            </summary>
+            <param name="contrast">The contrast.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wmb.Drawing.ContrastTransform.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.ContrastTransform"/> class.
+            </summary>
+        </member>
+        <member name="M:Wmb.Drawing.ContrastTransform.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wmb.Drawing.ContrastTransform"/> class.
+            </summary>
+            <param name="contrast">The contrast.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the contrast parameter less than 0 or greater than 3.</exception>
+        </member>
+        <member name="M:Wmb.Drawing.ContrastTransform.TransformCore(System.Drawing.Image)">
+            <summary>
+            Transforms the specified image.
+            </summary>
+            <param name="image">The image to transform.</param>
+        </member>
+        <member name="P:Wmb.Drawing.ContrastTransform.Position">
+            <summary>
+            Gets the position where the transform should took place in respect to other transforms.
+            </summary>
+            <value>600</value>
+        </member>
+        <member name="P:Wmb.Drawing.ContrastTransform.Contrast">
+            <summary>
+            Gets or sets the contrast.
+            </summary>
+            <value>The contrast.</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the value is less than 0 or greater than 3.</exception>
+        </member>
+    </members>
+</doc>

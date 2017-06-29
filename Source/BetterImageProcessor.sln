@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wmb.Drawing", "Wmb.Drawing\Wmb.Drawing.csproj", "{FF3341BD-80FF-4666-A165-D4F58057A4B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wmb.Web", "Wmb.Web\Wmb.Web.csproj", "{F526849E-485A-4D60-9255-41E6F95A8CB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wmb.Web.SharePoint", "Wmb.Web.Sharepoint\Wmb.Web.SharePoint.csproj", "{75AE01BE-00D3-4069-A9C5-818F2E8586F3}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs06.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Wmb.Drawing\\Wmb.Drawing.csproj
+		SccProjectName1 = Wmb.Drawing
+		SccLocalPath1 = Wmb.Drawing
+		SccProjectUniqueName2 = Wmb.Web\\Wmb.Web.csproj
+		SccProjectName2 = Wmb.Web
+		SccLocalPath2 = Wmb.Web
+		SccProjectUniqueName3 = Wmb.Web.Sharepoint\\Wmb.Web.SharePoint.csproj
+		SccProjectName3 = Wmb.Web.Sharepoint
+		SccLocalPath3 = Wmb.Web.Sharepoint
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF3341BD-80FF-4666-A165-D4F58057A4B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF3341BD-80FF-4666-A165-D4F58057A4B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF3341BD-80FF-4666-A165-D4F58057A4B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF3341BD-80FF-4666-A165-D4F58057A4B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F526849E-485A-4D60-9255-41E6F95A8CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F526849E-485A-4D60-9255-41E6F95A8CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F526849E-485A-4D60-9255-41E6F95A8CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F526849E-485A-4D60-9255-41E6F95A8CB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75AE01BE-00D3-4069-A9C5-818F2E8586F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75AE01BE-00D3-4069-A9C5-818F2E8586F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75AE01BE-00D3-4069-A9C5-818F2E8586F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75AE01BE-00D3-4069-A9C5-818F2E8586F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

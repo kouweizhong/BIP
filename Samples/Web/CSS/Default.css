@@ -1,0 +1,63 @@
+﻿a, a:visited
+{
+    text-decoration: none;
+    font-weight: bold;
+    color: #ED9121;
+}
+
+body
+{
+    background-color: #0099CC;
+    color: #333333;
+    font-size: 9pt;
+    font-family: "Trebuchet MS" , Verdana, Helvetica, Arial, Sans-serif;
+}
+
+h1
+{
+    font-size: 20pt;
+}
+
+h2
+{
+    padding-top: 15px;
+    font-size: 16pt;
+}
+
+#content
+{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    border: solid 2px black;
+    padding: 15px;
+}
+
+div.breaker
+{
+    text-align: center;
+    border-bottom: dotted 2px #ddd;
+}
+
+div.cycleContainer
+{
+    width:516px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+div.cycle
+{
+    width: 162px;
+    height: 162px;
+    float: left;
+    margin:5px;
+}
+
+img.cycleImage
+{
+    background-color: #fff;
+    padding: 5px;
+    border: solid 1px #ddd;
+}
